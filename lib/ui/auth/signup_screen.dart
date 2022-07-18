@@ -56,7 +56,7 @@ class _SignupScreenState extends State<SignupScreen> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => 
-             CoordDashboard(),
+             const CoordDashboard(),
             
           
         ),
@@ -94,7 +94,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 flex: 2,
               ),
               SvgPicture.asset(
-                'assets/ic_instagram.svg',
+                'assets/logooo.svg',
                 color: primaryColor,
                 height: 64,
               ),
