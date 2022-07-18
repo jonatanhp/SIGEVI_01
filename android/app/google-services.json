@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "134427621556",
+    "project_id": "sigevi01",
+    "storage_bucket": "sigevi01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134427621556:android:6fe9f5a34627b4e61a3fe1",
+        "android_client_info": {
+          "package_name": "com.example.sigevi_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134427621556-q8ji40c1dhf1e2tn3thuugi5nuu2lkrc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sigevi_1",
+            "certificate_hash": "21d30dadc12e927f7bfed79fb3598e9c39d2f3dd"
+          }
+        },
+        {
+          "client_id": "134427621556-n9lvoomc530rtaqdm0g9u7jc0aekt1r2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ6NuuEs84QfNs_a_0o8jR_6gr0zy0JZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134427621556-n9lvoomc530rtaqdm0g9u7jc0aekt1r2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
