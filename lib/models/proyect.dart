@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Proyect{
   String description;
-  String uuid;
+  String uid;
   String userName;
   String proyectName;
   List attendances;
@@ -13,7 +13,7 @@ class Proyect{
 
   Proyect({
     required this.description,
-    required this.uuid,
+    required this.uid,
     required this.userName,
     required this.proyectName,
     required this.attendances,
@@ -27,7 +27,7 @@ class Proyect{
     var snap=snapshot.data();
     return Proyect(
       description: snapshot['description'],
-      uuid: snapshot['uuid'],
+      uid: snapshot['uid'],
       userName: snapshot['userName'],
       proyectName: snapshot['proyectName'],
       attendances: snapshot['attendances'],
@@ -41,7 +41,7 @@ class Proyect{
   Map<String, dynamic> toJson() {
     return {
       'description': description,
-      'uuid': uuid,
+      'uid': uid,
       'userName': userName,
       'proyectName': proyectName,
       'attendances': attendances,
@@ -55,7 +55,7 @@ class Proyect{
   //toString method
   @override
   String toString() {
-    return 'Proyect{description: $description, uuid: $uuid, userName: $userName, proyectName: $proyectName , attendances: $attendances, proyectId: $proyectId, createdAt: $createdAt, profImage: $profImage}';
+    return 'Proyect{description: $description, uid: $uid, userName: $userName, proyectName: $proyectName , attendances: $attendances, proyectId: $proyectId, createdAt: $createdAt, profImage: $profImage}';
   }
 
 
