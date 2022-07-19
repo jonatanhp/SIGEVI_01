@@ -5,6 +5,8 @@ import 'package:sigevi_1/resources/auth_helper.dart';
 class UserProvider with ChangeNotifier {
   User? _user;
   final AuthMethods _authMethods = AuthMethods();
+  
+  
 
   User get getUser => _user!;
 
@@ -13,4 +15,5 @@ class UserProvider with ChangeNotifier {
     _user = user;
     notifyListeners();
   }
+  
 }

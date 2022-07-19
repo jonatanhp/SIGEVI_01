@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (context) => 
-               CoordDashboard(),
+               const CoordDashboard(),
               
             
           ),

@@ -74,7 +74,7 @@ class _CoordDashboardState extends State<CoordDashboard> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              color: (_page == 4) ? primaryColor : secondaryColor,
+              color: (_page == 3) ? primaryColor : secondaryColor,
             ),
             label: 'Perfil',
             backgroundColor: primaryColor,

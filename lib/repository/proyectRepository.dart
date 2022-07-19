@@ -10,7 +10,7 @@ class ProyectRepository{
   Future<String> addProject(String projectName, String description, String uid, String userName, String profImage) async{
     String res="Ocurrio un error al crear el proyecto";
     try{
-      String projectId=const Uuid().v4();
+      String projectId=const Uuid().v1();
       Proyect project= Proyect(
         description: description,
         uid: uid,
@@ -21,7 +21,7 @@ class ProyectRepository{
         createdAt: DateTime.now(),
         profImage: profImage,
       );
-      _firestore.collection('proyects').doc(projectId).set(project.toJson());
+      _firestore.collection('projects').doc(projectId).set(project.toJson());
       res="Proyecto creado correctamente";
       
     }catch (e) {
@@ -45,12 +45,24 @@ class ProyectRepository{
         createdAt: DateTime.now(),
         profImage: profImage,
       );
-      _firestore.collection('proyects').doc(projectId).update(project.toJson());
+      _firestore.collection('projects').doc(projectId).update(project.toJson());
       res="Proyecto actualizado correctamente";
       
     }catch (e) {
         print(e);
       }
+    return res;
+
+  }
+
+  Future<String> deleteProject(String projectId) async {
+    String res = "Some error occurred";
+    try {
+      await _firestore.collection('projects').doc(projectId).delete();
+      res = 'success';
+    } catch (err) {
+      res = err.toString();
+    }
     return res;
   }
 
