@@ -56,7 +56,7 @@ class AuthMethods{
           );
 
           await _firestore.collection('users').doc(userCredential.user!.uid).set(user.toJson());
-          res="Usuario registrado correctamente";
+          res="success";
     }
     else{
       res="Todos los campos son obligatorios";
@@ -86,7 +86,7 @@ class AuthMethods{
               password: password
             );
 
-          res="Usuario iniciado correctamente";
+          res="success";
     }
     else{
       res="Todos los campos son obligatorios";

@@ -47,7 +47,8 @@ class User {
     };
   }
 
-  factory User.fromJson(Map<String, dynamic> json) {
+  // ignore: avoid_types_as_parameter_names
+  factory User.fromJson(Map<dynamic, dynamic> json) {
     return User(
       uid: json['uid'],
       userName: json['userName'],

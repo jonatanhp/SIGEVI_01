@@ -33,7 +33,7 @@ class _AddProjectScreenState extends State<AddProjectScreen>{
         userName, 
         profImage,
         );
-      if(res=="Proyecto creado correctamente"){
+      if(res=="success"){
         setState(() {
           isLoading=false;
         });

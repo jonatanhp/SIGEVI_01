@@ -22,7 +22,7 @@ class ProyectRepository{
         profImage: profImage,
       );
       _firestore.collection('projects').doc(projectId).set(project.toJson());
-      res="Proyecto creado correctamente";
+      res="success";
       
     }catch (e) {
         print(e);
@@ -46,7 +46,7 @@ class ProyectRepository{
         profImage: profImage,
       );
       _firestore.collection('projects').doc(projectId).update(project.toJson());
-      res="Proyecto actualizado correctamente";
+      res="success";
       
     }catch (e) {
         print(e);
