@@ -3,13 +3,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Sesion{
   String proyectId;
   String proyectName;
+  String uid;
+  String userName;
   String sesionId;
   String description;
   DateTime createdAt;
 
+
   Sesion({
     required this.proyectId,
     required this.proyectName,
+    required this.uid,
+    required this.userName,
     required this.sesionId,
     required this.description,
     required this.createdAt,
@@ -20,6 +25,8 @@ class Sesion{
     return Sesion(
       proyectId: snapshot['proyectId'],
       proyectName: snapshot['proyectName'],
+      uid: snapshot['uid'],
+      userName: snapshot['userName'],
       sesionId: snapshot['sesionId'],
       description: snapshot['description'],
       createdAt: snapshot['createdAt'],
@@ -31,6 +38,8 @@ class Sesion{
     return {
       'proyectId': proyectId,
       'proyectName': proyectName,
+      'uid': uid,
+      'userName': userName,
       'sesionId': sesionId,
       'description': description,
       'createdAt': createdAt,

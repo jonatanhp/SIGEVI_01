@@ -30,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
                 color: primaryColor,
                 height: 32,
               ),
-              actions: [
+              /*actions: [
                 IconButton(
                   icon: const Icon(
                     Icons.messenger_outline,
@@ -38,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   onPressed: () {},
                 ),
-              ],
+              ],*/
             ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('projects').snapshots(),

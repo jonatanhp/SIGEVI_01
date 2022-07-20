@@ -7,7 +7,21 @@ import 'package:sigevi_1/ui/pages/main_screen.dart';
 
 const webScreenSize = 600;
 
-List<Widget> homeScreenItems = [
+List<Widget> homeCoordScreenItems = [
+
+  const MainScreen(),
+  const Text('notifications'),
+  const AddProjectScreen(),
+  
+    
+  ProfileScreen(
+    uid: FirebaseAuth.instance.currentUser!.uid,
+  ),
+  
+  
+];
+
+List<Widget> homeAlumnoScreenItems = [
 
   const MainScreen(),
   const Text('notifications'),

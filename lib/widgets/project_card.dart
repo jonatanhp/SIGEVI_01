@@ -4,6 +4,7 @@ import 'package:sigevi_1/models/user.dart' as model;
 import 'package:sigevi_1/providers/user_provider.dart';
 import 'package:sigevi_1/resources/firestore_methods.dart';
 import 'package:sigevi_1/repository/proyectRepository.dart';
+import 'package:sigevi_1/ui/sesionbloc/add_sesion_screen.dart';
 //import 'package:sigevi_1/screens/comments_screen.dart';
 import 'package:sigevi_1/utils/colors.dart';
 import 'package:sigevi_1/utils/global_variable.dart';
@@ -32,6 +33,8 @@ class _ProjectCardState extends State<ProjectCard> {
     super.initState();
     fetchCommentLen();
   }
+
+  
 
   fetchCommentLen() async {
     try {
@@ -112,46 +115,62 @@ class _ProjectCardState extends State<ProjectCard> {
                   ),
                 ),
                 widget.snap['uid'].toString() == user.uid
-                    ? IconButton(
-                        onPressed: () {
-                          showDialog(
-                            useRootNavigator: false,
-                            context: context,
-                            builder: (context) {
-                              return Dialog(
-                                child: ListView(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 16),
-                                    shrinkWrap: true,
-                                    children: [
-                                      'Delete',
-                                    ]
-                                        .map(
-                                          (e) => InkWell(
-                                              child: Container(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 12,
-                                                        horizontal: 16),
-                                                child: Text(e),
+                    ? 
+
+                    IconButton(
+                                  icon: Icon(Icons.edit),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AddSesionScreen(
+                                            uid: widget.snap['uid'].toString(),
+                                            proyectId: widget.snap['proyectId'].toString(),
+                                            
+                                              )),
+                                    );
+                                  }): Container(),
+                    
+                    IconButton(
+                                  icon: Icon(Icons.delete),
+                                  onPressed: () {
+                                    showDialog(
+                                        context: context,
+                                        barrierDismissible: true,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title:
+                                                Text("Mensaje de confirmacion"),
+                                            content: Text("Desea Eliminar?"),
+                                            actions: [
+                                              FlatButton(
+                                                child: const Text('CANCEL'),
+                                                onPressed: () {
+                                                  Navigator.of(context)
+                                                      .pop('Failure');
+                                                },
                                               ),
-                                              onTap: () {
-                                                deleteProject(
-                                                  widget.snap['postId']
-                                                      .toString(),
-                                                );
-                                                // remove the dialog box
-                                                Navigator.of(context).pop();
-                                              }),
-                                        )
-                                        .toList()),
-                              );
-                            },
-                          );
-                        },
-                        icon: const Icon(Icons.more_vert),
-                      )
-                    : Container(),
+                                              FlatButton(
+                                                  child: const Text('ACCEPT'),
+                                                  onPressed: () {
+                                                    Navigator.of(context)
+                                                        .pop('Success');
+                                                  })
+                                            ],
+                                          );
+                                        }).then((value) {
+                                      /*if (value.toString() == "Success") {
+                                        print(beneficiariox.id);
+                                        /*Provider.of<BeneficiarioApi>(context,
+                                                listen: false)
+                                            .deleteBeneficiario(beneficiariox.id)
+                                            .then((value) => onGoBack(value));*/
+                                        //var onGoBack = onGoBack;
+                                        BlocProvider.of<BeneficiarioBloc>(context).add(DeleteBeneficiarioEvent(beneficiario: beneficiariox));
+                                      }*/
+                                    });
+                                  })
+                    
               ],
             ),
           ),

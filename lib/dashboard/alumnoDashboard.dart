@@ -50,7 +50,7 @@ class _CoordDashboardState extends State<CoordDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        children: homeCoordScreenItems,
+        children: homeAlumnoScreenItems,
         controller: pageController,
         onPageChanged: onPageChanged,
       ),
