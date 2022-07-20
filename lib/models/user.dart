@@ -21,7 +21,8 @@ class User {
     required this.role,
   });
 
-  static User fromSnapshot(DocumentSnapshot snapshot) {
+  static User fromSnapshot(DocumentSnapshot snap) {
+    var snapshot=snap.data() as Map<String, dynamic>; 
     return User(
       uid: snapshot['uid'],
       userName: snapshot['userName'],

@@ -26,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
               backgroundColor: mobileBackgroundColor,
               centerTitle: false,
               title: SvgPicture.asset(
-                'assets/ic_instagram.svg',
+                'assets/logooo.svg',
                 color: primaryColor,
                 height: 32,
               ),

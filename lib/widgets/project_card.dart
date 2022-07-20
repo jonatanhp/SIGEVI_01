@@ -255,15 +255,7 @@ class _ProjectCardState extends State<ProjectCard> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                DefaultTextStyle(
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2!
-                        .copyWith(fontWeight: FontWeight.w800),
-                    child: Text(
-                      '${widget.snap['likes'].length} likes',
-                      style: Theme.of(context).textTheme.bodyText2,
-                    )),
+                
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.only(
@@ -305,10 +297,21 @@ class _ProjectCardState extends State<ProjectCard> {
                     ),
                   ),
                 ),*/
+
+                Container(
+                  child: Text(
+                    (widget.snap['proyectName']),
+                    style: const TextStyle(
+                      color: secondaryColor,
+                    ),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                ),
+
                 Container(
                   child: Text(
                     DateFormat.yMMMd()
-                        .format(widget.snap['datePublished'].toDate()),
+                        .format(widget.snap['creatsedAt'].toDate()),
                     style: const TextStyle(
                       color: secondaryColor,
                     ),

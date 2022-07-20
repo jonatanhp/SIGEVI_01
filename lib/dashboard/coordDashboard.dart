@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sigevi_1/utils/colors.dart';
 import 'package:sigevi_1/utils/global_variable.dart';
+import 'package:sigevi_1/providers/user_provider.dart';
+import 'package:provider/provider.dart';
 
 class CoordDashboard extends StatefulWidget {
   const CoordDashboard({Key? key}) : super(key: key);
@@ -17,7 +19,14 @@ class _CoordDashboardState extends State<CoordDashboard> {
   @override
   void initState() {
     super.initState();
+    addData();
     pageController = PageController();
+  }
+
+  addData() async {
+    UserProvider _userProvider =
+        Provider.of<UserProvider>(context, listen: false);
+    await _userProvider.refreshUser();
   }
 
   @override
