@@ -20,24 +20,30 @@ class _AddProjectScreenState extends State<AddProjectScreen>{
   bool isLoading=false;
   final TextEditingController _projectNameController=TextEditingController();
   final TextEditingController _descriptionController=TextEditingController();
+  final TextEditingController _epController=TextEditingController();
+  final TextEditingController _cicloController=TextEditingController();
 
   void postProject(String uid, String userName, String profImage)async{
     setState(() {
       isLoading=true;
     });
+
+    cleanUpTextFields();
     try{
-      String res=await ProyectRepository().addProject(
-        _projectNameController.text, 
-        _descriptionController.text, 
-        uid, 
-        userName, 
-        profImage,
-        );
+      String res=await ProjectRepository().addProject(
+        _cicloController.text,
+        _descriptionController.text,
+        _epController.text,
+         profImage,
+         _projectNameController.text,
+         uid,
+         userName,
+          );
       if(res=="success"){
         setState(() {
           isLoading=false;
         });
-        showSnackBar(context, '¡Proyecto Creado!',);
+        showSnackBar(context, '¡Projecto Creado!',);
 
         }else{
           showSnackBar(context, res);
@@ -56,11 +62,14 @@ class _AddProjectScreenState extends State<AddProjectScreen>{
     super.dispose();
     _projectNameController.dispose();
     _descriptionController.dispose();
+    _epController.dispose();
+    _cicloController.dispose();
     
 
   }
   @override
   Widget build(BuildContext context){
+    cleanUpTextFields();
     final UserProvider userProvider=Provider.of<UserProvider>(context);
     return Scaffold(
       appBar: AppBar(
@@ -71,7 +80,7 @@ class _AddProjectScreenState extends State<AddProjectScreen>{
             Navigator.pop(context);
           },
         ),
-        title: Text('Crear Proyecto', style: TextStyle(color: Colors.white),),
+        title: Text('Crear Projecto', style: TextStyle(color: Colors.white),),
         centerTitle: false,
         actions: <Widget>[
           TextButton(
@@ -98,6 +107,35 @@ class _AddProjectScreenState extends State<AddProjectScreen>{
       //create project form
       body:Column(
         children:<Widget>[
+           const SizedBox(
+                height: 14,
+              ),
+          Row(
+            children: <Widget>[
+              CircleAvatar(
+                backgroundImage: NetworkImage(userProvider.getUser.photoUrl),
+                radius: 30,
+              
+              ),
+              const SizedBox(
+                height: 14,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width*0.8,
+                child: TextField(
+                  controller: _projectNameController,
+                  decoration: const InputDecoration(
+                    hintText: 'Nombre del Projecto',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
+            ]
+          ),
+          const SizedBox(
+                height: 14,
+              ),
+
           Row(
             children: <Widget>[
               CircleAvatar(
@@ -106,20 +144,77 @@ class _AddProjectScreenState extends State<AddProjectScreen>{
               
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width*0.3,
+                width: MediaQuery.of(context).size.width*0.8,
                 child: TextField(
-                  controller: _projectNameController,
+                  controller: _descriptionController,
                   decoration: const InputDecoration(
-                    hintText: 'Nombre del Proyecto',
+                    hintText: 'Descripción del proyecto',
                     border: OutlineInputBorder(),
                   ),
                 ),
               ),
             ]
-          )
+          ),
+
+           const SizedBox(
+                height: 14,
+              ),
+
+          Row(
+            children: <Widget>[
+              CircleAvatar(
+                backgroundImage: NetworkImage(userProvider.getUser.photoUrl),
+                radius: 30,
+              
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width*0.8,
+                child: TextField(
+                  controller: _epController,
+                  decoration: const InputDecoration(
+                    hintText: 'Escuela profesional',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
+            ]
+          ),
+
+           const SizedBox(
+                height: 14,
+              ),
+         
+          Row(
+            children: <Widget>[
+              CircleAvatar(
+                backgroundImage: NetworkImage(userProvider.getUser.photoUrl),
+                radius: 30,
+              
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width*0.8,
+                child: TextField(
+                  controller: _cicloController,
+                  decoration: const InputDecoration(
+                    hintText: 'Ciclo',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
+            ]
+          ),
         ]
       )
     );
+    }
+
+    //clean up the text fields
+
+    void cleanUpTextFields(){
+      _projectNameController.clear();
+      _descriptionController.clear();
+      _epController.clear();
+      _cicloController.clear();
     }
         
 

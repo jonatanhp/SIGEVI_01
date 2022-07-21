@@ -1,25 +1,35 @@
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:sigevi_1/models/proyect.dart';
+import 'package:sigevi_1/models/project.dart';
 import 'package:sigevi_1/resources/storage_methods.dart';
 import 'package:uuid/uuid.dart';
 
-class ProyectRepository{
+class ProjectRepository{
   final FirebaseFirestore _firestore=FirebaseFirestore.instance;
   
-  Future<String> addProject(String projectName, String description, String uid, String userName, String profImage) async{
-    String res="Ocurrio un error al crear el proyecto";
+  Future<String> addProject(String ciclo,String description,String ep,String profImage,String projectName,  String uid, String userName, 
+   
+  ) async{
+    String res="Ocurrio un error al crear el projecto";
     try{
       String projectId=const Uuid().v1();
-      Proyect project= Proyect(
-        description: description,
-        uid: uid,
-        userName: userName,
-        proyectName: projectName,
-        attendances: [],
-        proyectId: projectId,
+      Project project= Project(
+        ciclo: ciclo,
         createdAt: DateTime.now(),
+        description: description,
+        ep: ep,
         profImage: profImage,
+        uid: uid,
+        
+        
+       
+        
+         
+        projectName: projectName,
+        userName: userName,
+        
+        
+        projectId: projectId,
       );
       _firestore.collection('projects').doc(projectId).set(project.toJson());
       res="success";
@@ -32,16 +42,18 @@ class ProyectRepository{
 
   //update project
 
-  Future<String> updateProject(String projectId, String projectName, String description, String uid, String userName, String profImage) async{
-    String res="Ocurrio un error al actualizar el proyecto";
+  Future<String> updateProject(String projectId, String projectName, String description, String uid, 
+  String userName, String profImage, String ep, String ciclo) async{
+    String res="Ocurrio un error al actualizar el projecto";
     try{
-      Proyect project= Proyect(
+      Project project= Project(
         description: description,
         uid: uid,
         userName: userName,
-        proyectName: projectName,
-        attendances: [],
-        proyectId: projectId,
+        projectName: projectName,
+        projectId: projectId,
+        ep: ep,
+        ciclo: ciclo,
         createdAt: DateTime.now(),
         profImage: profImage,
       );

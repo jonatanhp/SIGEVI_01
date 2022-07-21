@@ -1,37 +1,40 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Proyect{
+class Project{
   String description;
   String uid;
   String userName;
-  String proyectName;
-  List attendances;
-  String proyectId;
+  String projectName;
+  String ep;
+  String ciclo;
+  String projectId;
   DateTime createdAt;
   //DateTime updatedAt;
   String profImage;
 
-  Proyect({
+  Project({
     required this.description,
     required this.uid,
     required this.userName,
-    required this.proyectName,
-    required this.attendances,
-    required this.proyectId,
+    required this.projectName,
+    required this.ep,
+    required this.ciclo,
+    required this.projectId,
     required this.createdAt,
     //required this.updatedAt,
     required this.profImage,
   });
 
-  static Proyect fromSnapshot(DocumentSnapshot snapshot) {
+  static Project fromSnapshot(DocumentSnapshot snapshot) {
     var snap=snapshot.data();
-    return Proyect(
+    return Project(
       description: snapshot['description'],
       uid: snapshot['uid'],
       userName: snapshot['userName'],
-      proyectName: snapshot['proyectName'],
-      attendances: snapshot['attendances'],
-      proyectId: snapshot['proyectId'],
+      projectName: snapshot['projectName'],
+      ep: snapshot['ep'],
+      ciclo: snapshot['ciclo'],
+      projectId: snapshot['projectId'],
       createdAt: snapshot['createdAt'],
       //updatedAt: snapshot['updatedAt'],
       profImage: snapshot['profImage'],
@@ -43,9 +46,10 @@ class Proyect{
       'description': description,
       'uid': uid,
       'userName': userName,
-      'proyectName': proyectName,
-      'attendances': attendances,
-      'proyectId': proyectId,
+      'projectName': projectName,
+      'ep': ep,
+      'ciclo': ciclo,
+      'projectId': projectId,
       'creatsedAt': createdAt,
       //'updatedAt': updatedAt,
       'profImage': profImage,
@@ -55,7 +59,7 @@ class Proyect{
   //toString method
   @override
   String toString() {
-    return 'Proyect{description: $description, uid: $uid, userName: $userName, proyectName: $proyectName , attendances: $attendances, proyectId: $proyectId, createdAt: $createdAt, profImage: $profImage}';
+    return 'Project{description: $description, uid: $uid, userName: $userName, projectName: $projectName, ep: $ep, ciclo: $ciclo, projectId: $projectId, createdAt: $createdAt, profImage: $profImage}';
   }
 
 

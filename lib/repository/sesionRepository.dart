@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:sigevi_1/models/proyect.dart';
+import 'package:sigevi_1/models/project.dart';
 import 'package:sigevi_1/models/sesion.dart';
 import 'package:sigevi_1/resources/storage_methods.dart';
 import 'package:uuid/uuid.dart';

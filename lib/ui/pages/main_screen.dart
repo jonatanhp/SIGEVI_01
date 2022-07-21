@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sigevi_1/utils/colors.dart';
@@ -41,7 +42,7 @@ class _MainScreenState extends State<MainScreen> {
               ],*/
             ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('projects').snapshots(),
+        stream: FirebaseFirestore.instance.collection('projects').where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid).snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

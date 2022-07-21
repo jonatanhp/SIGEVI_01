@@ -9,7 +9,7 @@ import 'package:sigevi_1/ui/pages/main_screen.dart';
 import '../ui/pages/attendancebloc/add_attendance_screen.dart';
 
 
-const webScreenSize = 600;
+const webScreenSize = 560;
 
 List<Widget> homeAlumnoScreenItems = [
 

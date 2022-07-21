@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
           MaterialPageRoute(
             builder: (context) {
               final UserProvider userProvider=Provider.of<UserProvider>(context);
-              if(userProvider.getUser.role=='user'){
+              if(userProvider.getUser.ciclo!='delegado'){
                 return AlumnoDashboard();
               }else{
                 return CoordDashboard();
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 64,
               ),
               const SizedBox(
-                height: 64,
+                height: 54,
               ),
               TextFieldInput(
                 hintText: 'Enter your email',

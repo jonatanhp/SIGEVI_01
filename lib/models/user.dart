@@ -6,9 +6,9 @@ class User {
   final String email;
   final String photoUrl;
   final String ep;
+  final String ciclo;
   
-  List proyects;
-  String role;
+  
 
   User({
     required this.uid,
@@ -16,9 +16,9 @@ class User {
     required this.email,
     required this.photoUrl,
     required this.ep,
+    required this.ciclo,
     
-    required this.proyects,
-    required this.role,
+    
   });
 
   static User fromSnapshot(DocumentSnapshot snap) {
@@ -29,9 +29,9 @@ class User {
       email: snapshot['email'],
       photoUrl: snapshot['photoUrl'],
       ep: snapshot['ep'],
+      ciclo: snapshot['ciclo'], 
       
-      proyects: snapshot['proyects'],
-      role: snapshot['role'],
+      
     );
   }
 
@@ -42,9 +42,9 @@ class User {
       'email': email,
       'photoUrl': photoUrl,
       'ep': ep,
+      'ciclo': ciclo,
       
-      'proyects': proyects,
-      'role': role,
+      
     };
   }
 
@@ -56,9 +56,9 @@ class User {
       email: json['email'],
       photoUrl: json['photoUrl'],
       ep: json['ep'],
+      ciclo: json['ciclo'],
       
-      proyects: json['proyects'],
-      role: json['role'],
+      
     );
   }
 
@@ -69,9 +69,9 @@ class User {
     map['email'] = email;
     map['photoUrl'] = photoUrl;
     map['ep'] = ep;
+    map['ciclo'] = ciclo;
 
-    map['proyects'] = proyects;
-    map['role'] = role;
+    
     return map;
   }
 
@@ -90,7 +90,7 @@ class User {
   //toString method to stringify the class object
   @override
   String toString() {
-    return 'User{uid: $uid, userName: $userName, email: $email, photoUrl: $photoUrl, ep: $ep, proyects: $proyects, role: $role}';
+    return 'User{uid: $uid, userName: $userName, email: $email, photoUrl: $photoUrl, ep: $ep}';
   }
 
 }

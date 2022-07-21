@@ -54,7 +54,7 @@ class _ProjectCardState extends State<ProjectCard> {
 
   deleteProject(String postId) async {
     try {
-      await ProyectRepository().deleteProject(postId);
+      await ProjectRepository().deleteProject(postId);
     } catch (err) {
       showSnackBar(
         context,
@@ -177,7 +177,7 @@ class _ProjectCardState extends State<ProjectCard> {
           // IMAGE SECTION OF THE POST
           /*GestureDetector(
             onDoubleTap: () {
-              ProyectRepository().likePost(
+              ProjectRepository().likePost(
                 widget.snap['postId'].toString(),
                 user.uid,
                 widget.snap['likes'],
@@ -235,7 +235,7 @@ class _ProjectCardState extends State<ProjectCard> {
                       : const Icon(
                           Icons.favorite_border,
                         ),
-                  onPressed: () => ProyectRepository().likePost(
+                  onPressed: () => ProjectRepository().likePost(
                     widget.snap['postId'].toString(),
                     user.uid,
                     widget.snap['likes'],

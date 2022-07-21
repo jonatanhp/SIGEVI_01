@@ -89,18 +89,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             backgroundImage: NetworkImage(
                               userData['photoUrl'],
                             ),
-                            radius: 40,
+                            radius: 30,
                           ),
                           Expanded(
                             flex: 1,
                             child: Column(
                               children: [
                                 Row(
-                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    buildStatColumn(projectLen, "projects"),
+                                    buildStatColumn(projectLen, "Proyectos"),
                                     
                                   ],
                                 ),
@@ -115,7 +115,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             backgroundColor:
                                                 mobileBackgroundColor,
                                             textColor: primaryColor,
-                                            borderColor: Colors.grey,
+                                            borderColor: Color.fromARGB(255, 9, 10, 71),
+                                            
                                             function: () async {
                                               await AuthMethods().logOutUser();
                                               Navigator.of(context)
@@ -158,6 +159,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           userData['userName'],
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
+                            fontSize: 18,
                           ),
                         ),
                       ),
@@ -167,7 +169,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           top: 1,
                         ),
                         child: Text(
-                          userData['role'],
+                          userData['ciclo'],
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
                         ),
                       ),
                     ],
@@ -188,8 +194,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Text(
           num.toString(),
           style: const TextStyle(
-            fontSize: 18,
+            fontSize: 30,
             fontWeight: FontWeight.bold,
+            color: Colors.black,
           ),
         ),
         Container(
@@ -197,9 +204,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Text(
             label,
             style: const TextStyle(
-              fontSize: 15,
+              fontSize: 25,
               fontWeight: FontWeight.w400,
-              color: Colors.grey,
+              color: Color.fromARGB(255, 27, 25, 25),
             ),
           ),
         ),

@@ -105,7 +105,7 @@ class _AddAttendanceScreenState extends State<AddAttendanceScreen> {
     );
   }
 
-  void postImage(String uid, String username,   String sesionId
+  void postImage(String uid, String userName,   String sesionId
   ) async {
     setState(() {
       isLoading = true;
@@ -116,7 +116,7 @@ class _AddAttendanceScreenState extends State<AddAttendanceScreen> {
       String res = await AttendanceRepository().addAttendance(
        
         uid,
-        username,
+        userName,
         sesionId,
        // attendanceId,
         _file!,
@@ -164,7 +164,7 @@ class _AddAttendanceScreenState extends State<AddAttendanceScreen> {
         ? Center(
             child: TextButton(
               
-              onPressed: () => _selectImage(context), child: Text('Add Image')),  
+              onPressed: () => _selectImage(context), child: Text('Subir evidencia')),  
             )
           
         : Scaffold(

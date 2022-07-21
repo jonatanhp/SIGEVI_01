@@ -24,7 +24,7 @@ class AuthMethods{
     required String password,
     required String userName,
     required String ep,
-    String role="user",
+    required String ciclo,
     required Uint8List image,
 
   }) async{
@@ -34,7 +34,7 @@ class AuthMethods{
          password.isNotEmpty ||
          userName.isNotEmpty ||
          ep.isNotEmpty ||
-         role.isNotEmpty ||
+         ciclo.isNotEmpty ||
          image != null){
 
           //register user with email and password
@@ -52,8 +52,8 @@ class AuthMethods{
             email: email,
             photoUrl: photoUrl,
             ep: ep,
-            proyects: [],
-            role: role,
+            ciclo: ciclo,
+            
           );
 
           await _firestore.collection('users').doc(userCredential.user!.uid).set(user.toJson());

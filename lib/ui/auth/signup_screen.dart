@@ -26,6 +26,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _epController = TextEditingController();
+  final TextEditingController _cicloController = TextEditingController();
   bool _isLoading = false;
   Uint8List? _image;
 
@@ -49,6 +50,7 @@ class _SignupScreenState extends State<SignupScreen> {
         password: _passwordController.text,
         userName: _usernameController.text,
         ep: _epController.text,
+        ciclo: _cicloController.text,
         image: _image!);
     // if string returned is sucess, user has been created
     if (res == "success") {
@@ -61,7 +63,7 @@ class _SignupScreenState extends State<SignupScreen> {
         MaterialPageRoute(
           builder: (context) {
               final UserProvider userProvider=Provider.of<UserProvider>(context);
-              if(userProvider.getUser.role=='user'){
+              if(userProvider.getUser.ciclo!='delegado'){
                 return AlumnoDashboard();
               }else{
                 return CoordDashboard();
@@ -104,7 +106,7 @@ class _SignupScreenState extends State<SignupScreen> {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -116,21 +118,21 @@ class _SignupScreenState extends State<SignupScreen> {
               SvgPicture.asset(
                 'assets/logooo.svg',
                 color: primaryColor,
-                height: 64,
+                height: 44,
               ),
               const SizedBox(
-                height: 64,
+                height: 44,
               ),
               Stack(
                 children: [
                   _image != null
                       ? CircleAvatar(
-                          radius: 64,
+                          radius: 44,
                           backgroundImage: MemoryImage(_image!),
                           backgroundColor: Colors.red,
                         )
                       : const CircleAvatar(
-                          radius: 64,
+                          radius: 44,
                           backgroundImage: NetworkImage(
                               'https://i.stack.imgur.com/l60Hf.png'),
                           backgroundColor: Colors.red,
@@ -146,32 +148,32 @@ class _SignupScreenState extends State<SignupScreen> {
                 ],
               ),
               const SizedBox(
-                height: 24,
+                height: 14,
               ),
               TextFieldInput(
-                hintText: 'Enter your username',
+                hintText: 'Ingrese sus nombres y apellidos',
                 textInputType: TextInputType.text,
                 textEditingController: _usernameController,
               ),
               const SizedBox(
-                height: 24,
+                height: 14,
               ),
               TextFieldInput(
-                hintText: 'Enter your email',
+                hintText: 'Ingrese su correo',
                 textInputType: TextInputType.emailAddress,
                 textEditingController: _emailController,
               ),
               const SizedBox(
-                height: 24,
+                height: 14,
               ),
               TextFieldInput(
-                hintText: 'Enter your password',
+                hintText: 'Ingrese su contraseña',
                 textInputType: TextInputType.text,
                 textEditingController: _passwordController,
                 isPass: true,
               ),
               const SizedBox(
-                height: 24,
+                height: 14,
               ),
               TextFieldInput(
                 hintText: 'Ingrese su Escuela profesional',
@@ -179,7 +181,15 @@ class _SignupScreenState extends State<SignupScreen> {
                 textEditingController: _epController,
               ),
               const SizedBox(
-                height: 24,
+                height: 14,
+              ),
+              TextFieldInput(
+                hintText: 'Ingrese su Ciclo',
+                textInputType: TextInputType.text,
+                textEditingController: _cicloController,
+              ),
+              const SizedBox(
+                height: 14,
               ),
               InkWell(
                 child: Container(
@@ -192,7 +202,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                   width: double.infinity,
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
                   decoration: const ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(4)),
