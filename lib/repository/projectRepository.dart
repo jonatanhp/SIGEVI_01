@@ -20,16 +20,12 @@ class ProjectRepository{
         ep: ep,
         profImage: profImage,
         uid: uid,
-        
-        
-       
-        
-         
         projectName: projectName,
+        projectId: projectId,
         userName: userName,
         
         
-        projectId: projectId,
+        
       );
       _firestore.collection('projects').doc(projectId).set(project.toJson());
       res="success";

@@ -43,7 +43,7 @@ class _AlumnoMainScreenState extends State<AlumnoMainScreen> {
               ],*/
             ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('projects').where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid).snapshots(),
+        stream: FirebaseFirestore.instance.collection('projects').snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

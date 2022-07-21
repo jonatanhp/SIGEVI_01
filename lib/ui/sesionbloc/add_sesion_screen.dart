@@ -88,7 +88,7 @@ class _AddSesionScreenState extends State<AddSesionScreen>{
         setState(() {
           isLoading=false;
         });
-        showSnackBar(context, '¡Proyecto Creado!',);
+        showSnackBar(context, '¡Sesión añadida!',);
 
         }else{
           showSnackBar(context, res);
@@ -121,7 +121,7 @@ class _AddSesionScreenState extends State<AddSesionScreen>{
             Navigator.pop(context);
           },
         ),
-        title: Text('Crear Proyecto', style: TextStyle(color: Colors.white),),
+        title: Text('Añadir sesión', style: TextStyle(color: Colors.white),),
         centerTitle: false,
         actions: <Widget>[
           TextButton(
@@ -150,6 +150,9 @@ class _AddSesionScreenState extends State<AddSesionScreen>{
       //create project form
       body:Column(
         children:<Widget>[
+          const SizedBox(
+                height: 14,
+              ),
           Row(
             children: <Widget>[
               CircleAvatar(
@@ -158,7 +161,7 @@ class _AddSesionScreenState extends State<AddSesionScreen>{
               
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width*0.3,
+                width: MediaQuery.of(context).size.width*0.8,
                 child: TextField(
                   controller: _descriptionController,
                   decoration: const InputDecoration(

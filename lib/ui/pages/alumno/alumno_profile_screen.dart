@@ -42,7 +42,7 @@ class _AlumnoProfileScreenState extends State<AlumnoProfileScreen> {
 
       // get project lENGTH
       var projectSnap = await FirebaseFirestore.instance
-          .collection('projects')
+          .collection('assigneds')
           .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
           .get();
 
@@ -100,7 +100,7 @@ class _AlumnoProfileScreenState extends State<AlumnoProfileScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    buildStatColumn(projectLen, "projects"),
+                                    buildStatColumn(projectLen, "assigneds"),
                                   ],
                                 ),
                                 Row(
@@ -157,7 +157,7 @@ class _AlumnoProfileScreenState extends State<AlumnoProfileScreen> {
                           top: 1,
                         ),
                         child: Text(
-                          userData['role'],
+                          userData['ciclo'],
                         ),
                       ),
                     ],

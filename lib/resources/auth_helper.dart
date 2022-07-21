@@ -12,6 +12,7 @@ class AuthMethods{
 
   Future<model.User> getUserDetails() async{
     User currentUser=_auth.currentUser!;
+    //esta ha sido probablemente la peor presentación que he tendi oen mi vida
     
     DocumentSnapshot documentSnapshot=
         await _firestore.collection('users').doc(currentUser.uid).get();

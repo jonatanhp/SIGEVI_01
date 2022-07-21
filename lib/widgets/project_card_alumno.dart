@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sigevi_1/models/user.dart' as model;
 import 'package:sigevi_1/providers/user_provider.dart';
@@ -42,6 +43,7 @@ class _ProjectCardAlumnoState extends State<ProjectCardAlumno> {
     try {
       QuerySnapshot snap = await FirebaseFirestore.instance
           .collection('projects')
+          
           
           .get();
       //commentLen = snap.docs.length;
@@ -137,13 +139,29 @@ class _ProjectCardAlumnoState extends State<ProjectCardAlumno> {
                     IconButton(
                                   icon: Icon(Icons.edit),
                                   onPressed: () {
-                                    AssignedRepository().addAssigned(widget.snap['projectName'],widget.snap['projectId'],widget.snap['uid'],widget.snap['userName'],"ddd");
+                                    AssignedRepository().addAssigned(widget.snap['projectName'],widget.snap['projectId'],FirebaseAuth.instance
+                                                        .currentUser!.uid,widget.snap['userName'],"ddd");
                                     //disable Icon Button
                                     showSnackBar(context, '¡Registrado en el projecto!',);
                                     setState(() {
                                       isLikeAnimating = true;
                                       Icons.disabled_by_default;
                                     });
+                                  }),
+
+                                  IconButton(
+                                  icon: Icon(Icons.list),
+                                  onPressed: () {
+                                    //invoque AlumnoSesionScreen
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => AlumnoSesionScreen(
+                                          projectId: widget.snap['projectId'].toString(),
+                                        ),
+                                      ),
+                                    );
+                                    child: AlumnoSesionScreen( projectId:widget.snap['projectId']);
                                   }),
                     
                     IconButton(

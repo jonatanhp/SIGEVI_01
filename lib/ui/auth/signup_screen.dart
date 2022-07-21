@@ -36,6 +36,8 @@ class _SignupScreenState extends State<SignupScreen> {
     _emailController.dispose();
     _passwordController.dispose();
     _usernameController.dispose();
+    _epController.dispose();
+    _cicloController.dispose();
   }
 
   void signUpUser() async {
@@ -118,7 +120,7 @@ class _SignupScreenState extends State<SignupScreen> {
               SvgPicture.asset(
                 'assets/logooo.svg',
                 color: primaryColor,
-                height: 44,
+                height: 4,
               ),
               const SizedBox(
                 height: 44,
@@ -132,7 +134,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           backgroundColor: Colors.red,
                         )
                       : const CircleAvatar(
-                          radius: 44,
+                          radius: 64,
                           backgroundImage: NetworkImage(
                               'https://i.stack.imgur.com/l60Hf.png'),
                           backgroundColor: Colors.red,
@@ -148,7 +150,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ],
               ),
               const SizedBox(
-                height: 14,
+                height: 34,
               ),
               TextFieldInput(
                 hintText: 'Ingrese sus nombres y apellidos',

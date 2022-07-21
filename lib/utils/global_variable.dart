@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sigevi_1/ui/pages/alumno/alumno_main_screen.dart';
 import 'package:sigevi_1/ui/pages/alumno/alumno_profile_screen.dart';
 import 'package:sigevi_1/ui/pages/profile_screen.dart';
+import 'package:sigevi_1/ui/pages/search_screen.dart';
 import 'package:sigevi_1/ui/projectbloc/add_project_screen.dart';
 import 'package:sigevi_1/ui/pages/main_screen.dart';
 
@@ -23,7 +24,7 @@ List<Widget> homeAlumnoScreenItems = [
 List<Widget> homeCoordScreenItems = [
 
   const MainScreen(),
-  const Text('notifications'),
+  const SearchScreen(),
   const AddProjectScreen(),
   
     

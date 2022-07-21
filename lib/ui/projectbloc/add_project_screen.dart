@@ -28,7 +28,7 @@ class _AddProjectScreenState extends State<AddProjectScreen>{
       isLoading=true;
     });
 
-    cleanUpTextFields();
+    
     try{
       String res=await ProjectRepository().addProject(
         _cicloController.text,
