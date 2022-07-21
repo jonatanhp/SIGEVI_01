@@ -83,7 +83,7 @@ class User {
     this.photoUrl = o["photoUrl"];
     this.ep = o["ep"];
     
-    this.proyects = o["proyects"];
+    this.projects = o["projects"];
     this.role = o["role"];
   }*/
 

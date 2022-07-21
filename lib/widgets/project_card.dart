@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sigevi_1/models/user.dart' as model;
 import 'package:sigevi_1/providers/user_provider.dart';
 import 'package:sigevi_1/resources/firestore_methods.dart';
-import 'package:sigevi_1/repository/proyectRepository.dart';
+import 'package:sigevi_1/repository/projectRepository.dart';
 import 'package:sigevi_1/ui/sesionbloc/add_sesion_screen.dart';
 //import 'package:sigevi_1/screens/comments_screen.dart';
 import 'package:sigevi_1/utils/colors.dart';
@@ -125,7 +125,7 @@ class _ProjectCardState extends State<ProjectCard> {
                                       MaterialPageRoute(
                                           builder: (context) => AddSesionScreen(
                                             uid: widget.snap['uid'].toString(),
-                                            proyectId: widget.snap['proyectId'].toString(),
+                                            projectId: widget.snap['projectId'].toString(),
                                             
                                               )),
                                     );
@@ -319,7 +319,7 @@ class _ProjectCardState extends State<ProjectCard> {
 
                 Container(
                   child: Text(
-                    (widget.snap['proyectName']),
+                    (widget.snap['projectName']),
                     style: const TextStyle(
                       color: secondaryColor,
                     ),

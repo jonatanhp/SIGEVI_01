@@ -4,7 +4,7 @@ import 'package:sigevi_1/models/user.dart' as model;
 import 'package:sigevi_1/providers/user_provider.dart';
 import 'package:sigevi_1/repository/assignedRepository.dart';
 import 'package:sigevi_1/resources/firestore_methods.dart';
-import 'package:sigevi_1/repository/proyectRepository.dart';
+import 'package:sigevi_1/repository/projectRepository.dart';
 import 'package:sigevi_1/ui/pages/alumno/alumno_sesion_screen.dart';
 import 'package:sigevi_1/ui/sesionbloc/add_sesion_screen.dart';
 //import 'package:sigevi_1/screens/comments_screen.dart';
@@ -127,19 +127,19 @@ class _ProjectCardAlumnoState extends State<ProjectCardAlumno> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => AlumnoSesionScreen(
-                                          proyectId: widget.snap['proyectId'].toString(),
+                                          projectId: widget.snap['projectId'].toString(),
                                         ),
                                       ),
                                     );
-                                    child: AlumnoSesionScreen( proyectId:widget.snap['proyectId']);
+                                    child: AlumnoSesionScreen( projectId:widget.snap['projectId']);
                                   }): Container(),
 
                     IconButton(
                                   icon: Icon(Icons.edit),
                                   onPressed: () {
-                                    AssignedRepository().addAssigned(widget.snap['proyectName'],widget.snap['proyectId'],widget.snap['uid'],widget.snap['userName'],"ddd");
+                                    AssignedRepository().addAssigned(widget.snap['projectName'],widget.snap['projectId'],widget.snap['uid'],widget.snap['userName'],"ddd");
                                     //disable Icon Button
-                                    showSnackBar(context, '¡Registrado en el proyecto!',);
+                                    showSnackBar(context, '¡Registrado en el projecto!',);
                                     setState(() {
                                       isLikeAnimating = true;
                                       Icons.disabled_by_default;
@@ -334,7 +334,7 @@ class _ProjectCardAlumnoState extends State<ProjectCardAlumno> {
 
                 Container(
                   child: Text(
-                    (widget.snap['proyectName']),
+                    (widget.snap['projectName']),
                     style: const TextStyle(
                       color: secondaryColor,
                     ),

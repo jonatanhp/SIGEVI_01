@@ -20,7 +20,7 @@ class AddAttendanceScreen extends StatefulWidget {
 }
 
 class _AddAttendanceScreenState extends State<AddAttendanceScreen> {
-  int proyectsLen=0;
+  int projectsLen=0;
   var userData = {};
   var sesionData = {};
   Uint8List?     _file;
@@ -48,7 +48,7 @@ class _AddAttendanceScreenState extends State<AddAttendanceScreen> {
           .where('sesionId', isEqualTo: widget.sesionId)
           .get();
 
-      proyectsLen = postSnap.docs.length;
+      projectsLen = postSnap.docs.length;
       userData = userSnap.docs[0].data();
       sesionData = postSnap.docs[0].data();
       

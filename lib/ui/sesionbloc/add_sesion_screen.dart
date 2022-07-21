@@ -7,16 +7,16 @@ import 'package:sigevi_1/providers/user_provider.dart';
 import 'package:sigevi_1/utils/colors.dart';
 import 'package:sigevi_1/utils/utils.dart';
 import 'package:provider/provider.dart';
-import 'package:sigevi_1/repository/proyectRepository.dart';
+import 'package:sigevi_1/repository/projectRepository.dart';
 import 'package:sigevi_1/repository/sesionRepository.dart';
 import 'package:sigevi_1/models/user.dart' as model;
 
 class AddSesionScreen extends StatefulWidget {
   final String uid;
-  final String proyectId;
+  final String projectId;
   
   
-  const AddSesionScreen({Key? key, required this.uid, required this.proyectId}) : super(key: key);
+  const AddSesionScreen({Key? key, required this.uid, required this.projectId}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -24,9 +24,9 @@ class AddSesionScreen extends StatefulWidget {
 }
 
 class _AddSesionScreenState extends State<AddSesionScreen>{
-  int proyectsLen=0;
+  int projectsLen=0;
   var userData = {};
-  var proyectData = {};
+  var projectData = {};
   bool isLoading=false;
   //final TextEditingController _projectNameController=TextEditingController();
   final TextEditingController _descriptionController=TextEditingController();
@@ -50,12 +50,12 @@ class _AddSesionScreenState extends State<AddSesionScreen>{
       // get post lENGTH
       var postSnap = await FirebaseFirestore.instance
           .collection('projects')
-          .where('proyectId', isEqualTo: widget.proyectId)
+          .where('projectId', isEqualTo: widget.projectId)
           .get();
 
-      proyectsLen = postSnap.docs.length;
+      projectsLen = postSnap.docs.length;
       userData = userSnap.docs[0].data();
-      proyectData = postSnap.docs[0].data();
+      projectData = postSnap.docs[0].data();
       
       
       setState(() {});
@@ -70,15 +70,15 @@ class _AddSesionScreenState extends State<AddSesionScreen>{
     });
   }
 
-  void postSesion(String uid, String userName, String proyectId, String proyectName,
+  void postSesion(String uid, String userName, String projectId, String projectName,
   String description)async{
     setState(() {
       isLoading=true;
     });
     try{
       String res=await SesionRepository().addSesion(
-        proyectName, 
-        proyectId, 
+        projectName, 
+        projectId, 
         uid, 
         userName, 
         description,
@@ -97,7 +97,7 @@ class _AddSesionScreenState extends State<AddSesionScreen>{
       setState(() {
         isLoading=false;
       });
-      showSnackBar(context, 'Ocurrio un error al crear el proyecto',);
+      showSnackBar(context, 'Ocurrio un error al crear el projecto',);
      
     }
     }
@@ -128,8 +128,8 @@ class _AddSesionScreenState extends State<AddSesionScreen>{
             onPressed: ()=> postSesion(
               userData['uid'],
               userData['userName'],
-              proyectData['proyectId'],
-              proyectData['proyectName'],
+              projectData['projectId'],
+              projectData['projectName'],
               _descriptionController.text,
               ),
               child: const Text(

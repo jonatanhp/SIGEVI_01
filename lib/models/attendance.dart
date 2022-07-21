@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Attendance{
   String uid;
   String userName;
-  //String proyectId;
-  //String proyectName;
+  //String projectId;
+  //String projectName;
   String sesionId;
   String attendanceId;
   DateTime createdAt;
@@ -13,8 +13,8 @@ class Attendance{
   Attendance({
     required this.uid,
     required this.userName,
-    //required this.proyectId,
-    //required this.proyectName,
+    //required this.projectId,
+    //required this.projectName,
     required this.sesionId,
     required this.attendanceId,
     required this.createdAt,
@@ -26,8 +26,8 @@ class Attendance{
     return Attendance(
       uid: snapshot['uid'],
       userName: snapshot['userName'],
-      //proyectId: snapshot['proyectId'],
-      //proyectName: snapshot['proyectName'],
+      //projectId: snapshot['projectId'],
+      //projectName: snapshot['projectName'],
       sesionId: snapshot['sesionId'],
       attendanceId: snapshot['attendanceId'],
       createdAt: snapshot['createdAt'],
@@ -40,8 +40,8 @@ class Attendance{
     return {
       'uid': uid,
       'userName': userName,
-      //'proyectId': proyectId,
-      //'proyectName': proyectName,
+      //'projectId': projectId,
+      //'projectName': projectName,
       'sesionId': sesionId,
       'attendanceId': attendanceId,
       'createdAt': createdAt,

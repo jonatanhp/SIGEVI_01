@@ -9,8 +9,8 @@ import 'package:sigevi_1/widgets/project_card_alumno.dart';
 import 'package:sigevi_1/widgets/sesion_card_alumno.dart';
 
 class AlumnoSesionScreen extends StatefulWidget {
-  final String proyectId;
-  const AlumnoSesionScreen({Key? key, required this.proyectId}) : super(key: key);
+  final String projectId;
+  const AlumnoSesionScreen({Key? key, required this.projectId}) : super(key: key);
 
   @override
   State<AlumnoSesionScreen> createState() => _AlumnoSesionScreenState();
@@ -45,7 +45,7 @@ class _AlumnoSesionScreenState extends State<AlumnoSesionScreen> {
               ],*/
             ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('sesions').where('proyectId', isEqualTo: widget.proyectId).snapshots(),
+        stream: FirebaseFirestore.instance.collection('sesions').where('projectId', isEqualTo: widget.projectId).snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

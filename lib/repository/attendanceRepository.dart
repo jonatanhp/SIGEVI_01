@@ -11,7 +11,7 @@ class AttendanceRepository{
 
   Future<String> addAttendance( String uid, String sesionId, 
    String userName  , Uint8List file) async{
-    String res="Ocurrio un error al inscribirse al proyecto";
+    String res="Ocurrio un error al inscribirse al projecto";
     try{
 
       String photoUrl =
@@ -21,8 +21,8 @@ class AttendanceRepository{
        
         uid: uid,
         userName: userName,
-        //proyectId: proyectId,
-        //proyectName: projectName,
+        //projectId: projectId,
+        //projectName: projectName,
         sesionId: sesionId,
         attendanceId: attendanceId,
         photoUrl: photoUrl,

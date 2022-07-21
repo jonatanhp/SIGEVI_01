@@ -8,16 +8,16 @@ import 'package:uuid/uuid.dart';
 class SesionRepository{
   final FirebaseFirestore _firestore=FirebaseFirestore.instance;
   
-  Future<String> addSesion(String projectName, String proyectId, String uid, String userName  , String description) async{
-    String res="Ocurrio un error al crear el proyecto";
+  Future<String> addSesion(String projectName, String projectId, String uid, String userName  , String description) async{
+    String res="Ocurrio un error al crear el projecto";
     try{
       String sesionId=const Uuid().v1();
       Sesion sesion= Sesion(
         description: description,
         uid: uid,
         userName: userName,
-        proyectId: proyectId,
-        proyectName: projectName,
+        projectId: projectId,
+        projectName: projectName,
         sesionId: sesionId,
         
         createdAt: DateTime.now(),
@@ -34,15 +34,15 @@ class SesionRepository{
 
   //update project
 
-  Future<String> updateSesion(String proyectId, String projectName, String description, String uid, String userName, String sesionId) async{
-    String res="Ocurrio un error al actualizar el proyecto";
+  Future<String> updateSesion(String projectId, String projectName, String description, String uid, String userName, String sesionId) async{
+    String res="Ocurrio un error al actualizar el projecto";
     try{
       Sesion sesion= Sesion(
         description: description,
         uid: uid,
         userName: userName,
-        proyectId: proyectId,
-        proyectName: projectName,
+        projectId: projectId,
+        projectName: projectName,
         sesionId: sesionId,
         
         createdAt: DateTime.now(),

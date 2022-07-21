@@ -4,9 +4,9 @@ class Assigned{
   String description;
   String uid;
   String userName;
-  String proyectName;
+  String projectName;
   List attendances;
-  String proyectId;
+  String projectId;
   String assignedId;
   DateTime createdAt;
   //DateTime updatedAt;
@@ -16,9 +16,9 @@ class Assigned{
     required this.description,
     required this.uid,
     required this.userName,
-    required this.proyectName,
+    required this.projectName,
     required this.attendances,
-    required this.proyectId,
+    required this.projectId,
     required this.assignedId,
     required this.createdAt,
     //required this.updatedAt,
@@ -31,9 +31,9 @@ class Assigned{
       description: snapshot['description'],
       uid: snapshot['uid'],
       userName: snapshot['userName'],
-      proyectName: snapshot['proyectName'],
+      projectName: snapshot['projectName'],
       attendances: snapshot['attendances'],
-      proyectId: snapshot['proyectId'],
+      projectId: snapshot['projectId'],
       assignedId: snapshot['assignedId'],
       createdAt: snapshot['createdAt'],
       //updatedAt: snapshot['updatedAt'],
@@ -46,9 +46,9 @@ class Assigned{
       'description': description,
       'uid': uid,
       'userName': userName,
-      'proyectName': proyectName,
+      'projectName': projectName,
       'attendances': attendances,
-      'proyectId': proyectId,
+      'projectId': projectId,
       'assignedId': assignedId,
       'creatsedAt': createdAt,
       //'updatedAt': updatedAt,
@@ -59,7 +59,7 @@ class Assigned{
   //toString method
   @override
   String toString() {
-    return 'Assigned{description: $description, uid: $uid, userName: $userName, proyectName: $proyectName , attendances: $attendances, proyectId: $proyectId, createdAt: $createdAt}';
+    return 'Assigned{description: $description, uid: $uid, userName: $userName, projectName: $projectName , attendances: $attendances, projectId: $projectId, createdAt: $createdAt}';
   }
 
 

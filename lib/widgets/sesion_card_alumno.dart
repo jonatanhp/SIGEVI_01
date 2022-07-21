@@ -4,7 +4,7 @@ import 'package:sigevi_1/models/user.dart' as model;
 import 'package:sigevi_1/providers/user_provider.dart';
 import 'package:sigevi_1/repository/assignedRepository.dart';
 import 'package:sigevi_1/resources/firestore_methods.dart';
-import 'package:sigevi_1/repository/proyectRepository.dart';
+import 'package:sigevi_1/repository/projectRepository.dart';
 import 'package:sigevi_1/ui/pages/alumno/alumno_sesion_screen.dart';
 import 'package:sigevi_1/ui/pages/attendancebloc/add_attendance_screen.dart';
 import 'package:sigevi_1/ui/sesionbloc/add_sesion_screen.dart';
@@ -128,7 +128,7 @@ class _SesionCardAlumnoState extends State<SesionCardAlumno> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => AlumnoSesionScreen(
-                                          proyectId: widget.snap['sesionId'].toString(),
+                                          projectId: widget.snap['sesionId'].toString(),
                                         ),
                                       ),
                                     );
@@ -337,7 +337,7 @@ class _SesionCardAlumnoState extends State<SesionCardAlumno> {
 
                 Container(
                   child: Text(
-                    (widget.snap['proyectName']),
+                    (widget.snap['projectName']),
                     style: const TextStyle(
                       color: secondaryColor,
                     ),

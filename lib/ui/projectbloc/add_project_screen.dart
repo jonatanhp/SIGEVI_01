@@ -5,7 +5,7 @@ import 'package:sigevi_1/providers/user_provider.dart';
 import 'package:sigevi_1/utils/colors.dart';
 import 'package:sigevi_1/utils/utils.dart';
 import 'package:provider/provider.dart';
-import 'package:sigevi_1/repository/proyectRepository.dart';
+import 'package:sigevi_1/repository/projectRepository.dart';
 import 'package:sigevi_1/models/user.dart' as model;
 
 class AddProjectScreen extends StatefulWidget {

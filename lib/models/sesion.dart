@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Sesion{
-  String proyectId;
-  String proyectName;
+  String projectId;
+  String projectName;
   String uid;
   String userName;
   String sesionId;
@@ -11,8 +11,8 @@ class Sesion{
 
 
   Sesion({
-    required this.proyectId,
-    required this.proyectName,
+    required this.projectId,
+    required this.projectName,
     required this.uid,
     required this.userName,
     required this.sesionId,
@@ -23,8 +23,8 @@ class Sesion{
   static Sesion fromSnapshot(DocumentSnapshot snapshot) {
     var snap=snapshot.data();
     return Sesion(
-      proyectId: snapshot['proyectId'],
-      proyectName: snapshot['proyectName'],
+      projectId: snapshot['projectId'],
+      projectName: snapshot['projectName'],
       uid: snapshot['uid'],
       userName: snapshot['userName'],
       sesionId: snapshot['sesionId'],
@@ -36,8 +36,8 @@ class Sesion{
   //toJson method
   Map<String, dynamic> toJson() {
     return {
-      'proyectId': proyectId,
-      'proyectName': proyectName,
+      'projectId': projectId,
+      'projectName': projectName,
       'uid': uid,
       'userName': userName,
       'sesionId': sesionId,
@@ -49,6 +49,6 @@ class Sesion{
   //toString method
   @override
   String toString() {
-    return 'Sesion{proyectId: $proyectId, proyectName: $proyectName, sesionId: $sesionId, description: $description, createdAt: $createdAt}';
+    return 'Sesion{projectId: $projectId, projectName: $projectName, sesionId: $sesionId, description: $description, createdAt: $createdAt}';
   }
 }

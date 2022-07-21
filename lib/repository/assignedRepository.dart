@@ -9,16 +9,16 @@ import 'package:uuid/uuid.dart';
 class AssignedRepository{
   final FirebaseFirestore _firestore=FirebaseFirestore.instance;
   
-  Future<String> addAssigned(String projectName, String proyectId, String uid, String userName  , String description) async{
-    String res="Ocurrio un error al inscribirse al proyecto";
+  Future<String> addAssigned(String projectName, String projectId, String uid, String userName  , String description) async{
+    String res="Ocurrio un error al inscribirse al projecto";
     try{
       String assignedId=const Uuid().v1();
       Assigned assigned= Assigned(
         description: description,
         uid: uid,
         userName: userName,
-        proyectId: proyectId,
-        proyectName: projectName,
+        projectId: projectId,
+        projectName: projectName,
         attendances: [],
         assignedId: assignedId,
         
@@ -37,15 +37,15 @@ class AssignedRepository{
 
   //update project
 
-  Future<String> updateAssigned(String proyectId, String projectName, String description, String uid, String userName, String assignedId) async{
-    String res="Ocurrio un error al actualizar el proyecto";
+  Future<String> updateAssigned(String projectId, String projectName, String description, String uid, String userName, String assignedId) async{
+    String res="Ocurrio un error al actualizar el projecto";
     try{
       Assigned assigned= Assigned(
         description: description,
         uid: uid,
         userName: userName,
-        proyectId: proyectId,
-        proyectName: projectName,
+        projectId: projectId,
+        projectName: projectName,
         attendances: [],
         assignedId: assignedId,
 
