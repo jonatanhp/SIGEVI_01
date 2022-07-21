@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sigevi_1/models/user.dart' as model;
 import 'package:sigevi_1/providers/user_provider.dart';
+import 'package:sigevi_1/repository/assignedRepository.dart';
 import 'package:sigevi_1/resources/firestore_methods.dart';
 import 'package:sigevi_1/repository/proyectRepository.dart';
+import 'package:sigevi_1/ui/pages/alumno/alumno_sesion_screen.dart';
 import 'package:sigevi_1/ui/sesionbloc/add_sesion_screen.dart';
 //import 'package:sigevi_1/screens/comments_screen.dart';
 import 'package:sigevi_1/utils/colors.dart';
@@ -13,18 +15,18 @@ import 'package:sigevi_1/utils/utils.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class ProjectCard extends StatefulWidget {
+class ProjectCardAlumno extends StatefulWidget {
   final snap;
-  const ProjectCard({
+  const ProjectCardAlumno({
     Key? key,
     required this.snap,
   }) : super(key: key);
 
   @override
-  State<ProjectCard> createState() => _ProjectCardState();
+  State<ProjectCardAlumno> createState() => _ProjectCardAlumnoState();
 }
 
-class _ProjectCardState extends State<ProjectCard> {
+class _ProjectCardAlumnoState extends State<ProjectCardAlumno> {
   //int commentLen = 0;
   bool isLikeAnimating = false;
 
@@ -115,21 +117,34 @@ class _ProjectCardState extends State<ProjectCard> {
                   ),
                 ),
                 widget.snap['uid'].toString() == user.uid
-                    ? 
+                    ?
 
                     IconButton(
                                   icon: Icon(Icons.list),
                                   onPressed: () {
+                                    //invoque AlumnoSesionScreen
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => AddSesionScreen(
-                                            uid: widget.snap['uid'].toString(),
-                                            proyectId: widget.snap['proyectId'].toString(),
-                                            
-                                              )),
+                                        builder: (context) => AlumnoSesionScreen(
+                                          proyectId: widget.snap['proyectId'].toString(),
+                                        ),
+                                      ),
                                     );
+                                    child: AlumnoSesionScreen( proyectId:widget.snap['proyectId']);
                                   }): Container(),
+
+                    IconButton(
+                                  icon: Icon(Icons.edit),
+                                  onPressed: () {
+                                    AssignedRepository().addAssigned(widget.snap['proyectName'],widget.snap['proyectId'],widget.snap['uid'],widget.snap['userName'],"ddd");
+                                    //disable Icon Button
+                                    showSnackBar(context, '¡Registrado en el proyecto!',);
+                                    setState(() {
+                                      isLikeAnimating = true;
+                                      Icons.disabled_by_default;
+                                    });
+                                  }),
                     
                     IconButton(
                                   icon: Icon(Icons.delete),

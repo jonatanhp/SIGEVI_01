@@ -74,18 +74,12 @@ class _AlumnoDashboardState extends State<AlumnoDashboard> {
               ),
               label: 'Buscar',
               backgroundColor: primaryColor),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.add_circle,
-                color: (_page == 2) ? primaryColor : secondaryColor,
-              ),
-              label: 'agregar',
-              backgroundColor: primaryColor),
+          
           
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              color: (_page == 3) ? primaryColor : secondaryColor,
+              color: (_page == 2) ? primaryColor : secondaryColor,
             ),
             label: 'Perfil',
             backgroundColor: primaryColor,

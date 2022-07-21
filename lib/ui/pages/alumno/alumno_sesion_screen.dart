@@ -6,15 +6,17 @@ import 'package:sigevi_1/utils/colors.dart';
 import 'package:sigevi_1/utils/global_variable.dart';
 import 'package:sigevi_1/widgets/project_card.dart';
 import 'package:sigevi_1/widgets/project_card_alumno.dart';
+import 'package:sigevi_1/widgets/sesion_card_alumno.dart';
 
-class AlumnoMainScreen extends StatefulWidget {
-  const AlumnoMainScreen({Key? key}) : super(key: key);
+class AlumnoSesionScreen extends StatefulWidget {
+  final String proyectId;
+  const AlumnoSesionScreen({Key? key, required this.proyectId}) : super(key: key);
 
   @override
-  State<AlumnoMainScreen> createState() => _AlumnoMainScreenState();
+  State<AlumnoSesionScreen> createState() => _AlumnoSesionScreenState();
 }
 
-class _AlumnoMainScreenState extends State<AlumnoMainScreen> {
+class _AlumnoSesionScreenState extends State<AlumnoSesionScreen> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -43,7 +45,7 @@ class _AlumnoMainScreenState extends State<AlumnoMainScreen> {
               ],*/
             ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('projects').where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid).snapshots(),
+        stream: FirebaseFirestore.instance.collection('sesions').where('proyectId', isEqualTo: widget.proyectId).snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -58,7 +60,7 @@ class _AlumnoMainScreenState extends State<AlumnoMainScreen> {
                 horizontal: width > webScreenSize ? width * 0.3 : 0,
                 vertical: width > webScreenSize ? 15 : 0,
               ),
-              child: ProjectCardAlumno(
+              child: SesionCardAlumno(
                 snap: snapshot.data!.docs[index].data(),
               ),
             ),

@@ -2,8 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sigevi_1/models/user.dart' as model;
 import 'package:sigevi_1/providers/user_provider.dart';
+import 'package:sigevi_1/repository/assignedRepository.dart';
 import 'package:sigevi_1/resources/firestore_methods.dart';
 import 'package:sigevi_1/repository/proyectRepository.dart';
+import 'package:sigevi_1/ui/pages/alumno/alumno_sesion_screen.dart';
+import 'package:sigevi_1/ui/pages/attendancebloc/add_attendance_screen.dart';
 import 'package:sigevi_1/ui/sesionbloc/add_sesion_screen.dart';
 //import 'package:sigevi_1/screens/comments_screen.dart';
 import 'package:sigevi_1/utils/colors.dart';
@@ -13,18 +16,20 @@ import 'package:sigevi_1/utils/utils.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class ProjectCard extends StatefulWidget {
+import '../repository/sesionRepository.dart';
+
+class SesionCardAlumno extends StatefulWidget {
   final snap;
-  const ProjectCard({
+  const SesionCardAlumno({
     Key? key,
     required this.snap,
   }) : super(key: key);
 
   @override
-  State<ProjectCard> createState() => _ProjectCardState();
+  State<SesionCardAlumno> createState() => _SesionCardAlumnoState();
 }
 
-class _ProjectCardState extends State<ProjectCard> {
+class _SesionCardAlumnoState extends State<SesionCardAlumno> {
   //int commentLen = 0;
   bool isLikeAnimating = false;
 
@@ -52,9 +57,9 @@ class _ProjectCardState extends State<ProjectCard> {
     
   }
 
-  deleteProject(String postId) async {
+  deleteSesion(String postId) async {
     try {
-      await ProyectRepository().deleteProject(postId);
+      await SesionRepository().deleteSesion(postId);
     } catch (err) {
       showSnackBar(
         context,
@@ -114,8 +119,7 @@ class _ProjectCardState extends State<ProjectCard> {
                     ),
                   ),
                 ),
-                widget.snap['uid'].toString() == user.uid
-                    ? 
+                widget.snap['uid'].toString() == user.uid?
 
                     IconButton(
                                   icon: Icon(Icons.list),
@@ -123,13 +127,27 @@ class _ProjectCardState extends State<ProjectCard> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => AddSesionScreen(
-                                            uid: widget.snap['uid'].toString(),
-                                            proyectId: widget.snap['proyectId'].toString(),
-                                            
-                                              )),
+                                        builder: (context) => AlumnoSesionScreen(
+                                          proyectId: widget.snap['sesionId'].toString(),
+                                        ),
+                                      ),
                                     );
+                                    child: AddAttendanceScreen( sesionId:widget.snap['sesionId']);
                                   }): Container(),
+
+                    IconButton(
+                                  icon: Icon(Icons.edit),
+                                  onPressed: () {
+                                    //go to AddAttendanceScreen
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => AddAttendanceScreen(
+                                          sesionId: widget.snap['sesionId'].toString(),
+                                        ),
+                                      ),
+                                    );
+                                  }),
                     
                     IconButton(
                                   icon: Icon(Icons.delete),
@@ -177,7 +195,7 @@ class _ProjectCardState extends State<ProjectCard> {
           // IMAGE SECTION OF THE POST
           /*GestureDetector(
             onDoubleTap: () {
-              ProyectRepository().likePost(
+              SesionRepository().likePost(
                 widget.snap['postId'].toString(),
                 user.uid,
                 widget.snap['likes'],
@@ -235,7 +253,7 @@ class _ProjectCardState extends State<ProjectCard> {
                       : const Icon(
                           Icons.favorite_border,
                         ),
-                  onPressed: () => ProyectRepository().likePost(
+                  onPressed: () => SesionRepository().likePost(
                     widget.snap['postId'].toString(),
                     user.uid,
                     widget.snap['likes'],
@@ -330,7 +348,7 @@ class _ProjectCardState extends State<ProjectCard> {
                 Container(
                   child: Text(
                     DateFormat.yMMMd()
-                        .format(widget.snap['creatsedAt'].toDate()),
+                        .format(widget.snap['createdAt'].toDate()),
                     style: const TextStyle(
                       color: secondaryColor,
                     ),

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:sigevi_1/dashboard/alumnoDashboard.dart';
 import 'package:sigevi_1/providers/user_provider.dart';
 import 'package:sigevi_1/dashboard/coordDashboard.dart';
 
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
               if (snapshot.hasData) {
                 // if snapshot has data which means user is logged in then we check the width of screen and accordingly display the screen layout
                 return 
-                   const CoordDashboard();
+                   const AlumnoDashboard();
                  
               } else if (snapshot.hasError) {
                 return Center(

@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Attendance{
   String uid;
   String userName;
-  String proyectId;
-  String proyectName;
+  //String proyectId;
+  //String proyectName;
   String sesionId;
   String attendanceId;
   DateTime createdAt;
@@ -13,8 +13,8 @@ class Attendance{
   Attendance({
     required this.uid,
     required this.userName,
-    required this.proyectId,
-    required this.proyectName,
+    //required this.proyectId,
+    //required this.proyectName,
     required this.sesionId,
     required this.attendanceId,
     required this.createdAt,
@@ -26,8 +26,8 @@ class Attendance{
     return Attendance(
       uid: snapshot['uid'],
       userName: snapshot['userName'],
-      proyectId: snapshot['proyectId'],
-      proyectName: snapshot['proyectName'],
+      //proyectId: snapshot['proyectId'],
+      //proyectName: snapshot['proyectName'],
       sesionId: snapshot['sesionId'],
       attendanceId: snapshot['attendanceId'],
       createdAt: snapshot['createdAt'],
@@ -40,8 +40,8 @@ class Attendance{
     return {
       'uid': uid,
       'userName': userName,
-      'proyectId': proyectId,
-      'proyectName': proyectName,
+      //'proyectId': proyectId,
+      //'proyectName': proyectName,
       'sesionId': sesionId,
       'attendanceId': attendanceId,
       'createdAt': createdAt,
@@ -52,7 +52,7 @@ class Attendance{
   //toString method
   @override
   String toString() {
-    return 'Attendance{uid: $uid, userName: $userName, proyectId: $proyectId, proyectName: $proyectName, sesionId: $sesionId, attendanceId: $attendanceId, createdAt: $createdAt, photoUrl: $photoUrl}';
+    return 'Attendance{uid: $uid, userName: $userName,  sesionId: $sesionId, attendanceId: $attendanceId, createdAt: $createdAt, photoUrl: $photoUrl}';
   }
   
 }
