@@ -5,16 +5,18 @@ import 'package:sigevi_1/utils/global_variable.dart';
 import 'package:sigevi_1/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
-class CoordDashboard extends StatefulWidget {
-  const CoordDashboard({Key? key}) : super(key: key);
+class AlumnoDashboard extends StatefulWidget {
+  const AlumnoDashboard({Key? key}) : super(key: key);
 
   @override
-  State<CoordDashboard> createState() => _CoordDashboardState();
+  State<AlumnoDashboard> createState() => _AlumnoDashboardState();
 }
 
-class _CoordDashboardState extends State<CoordDashboard> {
+class _AlumnoDashboardState extends State<AlumnoDashboard> {
   int _page = 0;
   late PageController pageController; // for tabs animation
+
+  
 
   @override
   void initState() {
@@ -24,9 +26,9 @@ class _CoordDashboardState extends State<CoordDashboard> {
   }
 
   addData() async {
-    UserProvider _userProvider =
+    UserProvider userProvider =
         Provider.of<UserProvider>(context, listen: false);
-    await _userProvider.refreshUser();
+    await userProvider.refreshUser();
   }
 
   @override
@@ -62,7 +64,7 @@ class _CoordDashboardState extends State<CoordDashboard> {
               Icons.home,
               color: (_page == 0) ? primaryColor : secondaryColor,
             ),
-            label: 'principal',
+            label: 'principall',
             backgroundColor: primaryColor,
           ),
           BottomNavigationBarItem(

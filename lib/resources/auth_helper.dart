@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sigevi_1/models/user.dart' as model;
 import 'package:sigevi_1/resources/storage_methods.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class AuthMethods{
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -104,3 +105,9 @@ class AuthMethods{
   }
 
 }
+
+
+
+
+  
+

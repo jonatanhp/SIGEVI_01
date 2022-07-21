@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:sigevi_1/resources/auth_helper.dart';
 import 'package:sigevi_1/dashboard/coordDashboard.dart';
 
@@ -9,8 +10,14 @@ import 'package:sigevi_1/utils/global_variable.dart';
 import 'package:sigevi_1/utils/utils.dart';
 import 'package:sigevi_1/widgets/text_field_input.dart';
 
+import '../../dashboard/alumnoDashboard.dart';
+import '../../providers/user_provider.dart';
+
+import 'package:sigevi_1/models/user.dart' as model;
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+  
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -20,6 +27,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
+
+
+   
 
   @override
   void dispose() {
@@ -35,10 +45,26 @@ class _LoginScreenState extends State<LoginScreen> {
     String res = await AuthMethods().logInUser(
         email: _emailController.text, password: _passwordController.text);
     if (res == 'success') {
+      //get current user
+      addData();
+
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-            builder: (context) => 
-               const CoordDashboard(),
+            builder: (context) {
+              final UserProvider userProvider=Provider.of<UserProvider>(context);
+              if(userProvider.getUser.role=='user'){
+                return AlumnoDashboard();
+              }else{
+                return CoordDashboard();
+              }
+             
+              
+
+              
+            },
+            
+               
+               
               
             
           ),
@@ -55,8 +81,15 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  addData() async {
+    UserProvider _userProvider =
+        Provider.of<UserProvider>(context, listen: false);
+    await _userProvider.refreshUser();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final UserProvider userProvider=Provider.of<UserProvider>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(

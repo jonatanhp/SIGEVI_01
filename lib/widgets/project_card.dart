@@ -49,7 +49,7 @@ class _ProjectCardState extends State<ProjectCard> {
         err.toString(),
       );
     }
-    setState(() {});
+    
   }
 
   deleteProject(String postId) async {

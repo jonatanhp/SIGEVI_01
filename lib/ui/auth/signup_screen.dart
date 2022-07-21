@@ -2,6 +2,9 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:sigevi_1/dashboard/alumnoDashboard.dart';
+import 'package:sigevi_1/providers/user_provider.dart';
 import 'package:sigevi_1/resources/auth_helper.dart';
 import 'package:sigevi_1/dashboard/coordDashboard.dart';
 
@@ -52,11 +55,22 @@ class _SignupScreenState extends State<SignupScreen> {
       setState(() {
         _isLoading = false;
       });
+      addData();
       // navigate to the home screen
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => 
-             const CoordDashboard(),
+          builder: (context) {
+              final UserProvider userProvider=Provider.of<UserProvider>(context);
+              if(userProvider.getUser.role=='user'){
+                return AlumnoDashboard();
+              }else{
+                return CoordDashboard();
+              }
+             
+              
+
+              
+            },
             
           
         ),
@@ -76,6 +90,12 @@ class _SignupScreenState extends State<SignupScreen> {
     setState(() {
       _image = im;
     });
+  }
+
+   addData() async {
+    UserProvider _userProvider =
+        Provider.of<UserProvider>(context, listen: false);
+    await _userProvider.refreshUser();
   }
 
   @override

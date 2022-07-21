@@ -5,23 +5,23 @@ import 'package:sigevi_1/resources/auth_helper.dart';
 import 'package:sigevi_1/resources/firestore_methods.dart';
 import 'package:sigevi_1/ui/auth/login_screen.dart';
 import 'package:sigevi_1/utils/colors.dart';
+import 'package:sigevi_1/utils/global_variable.dart';
 import 'package:sigevi_1/utils/utils.dart';
 import 'package:sigevi_1/widgets/follow_button.dart';
+import 'package:sigevi_1/widgets/project_card.dart';
 
-class ProfileScreen extends StatefulWidget {
+class AlumnoProfileScreen extends StatefulWidget {
   final String uid;
-  const ProfileScreen({Key? key, required this.uid}) : super(key: key);
+  const AlumnoProfileScreen({Key? key, required this.uid}) : super(key: key);
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  _AlumnoProfileScreenState createState() => _AlumnoProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _AlumnoProfileScreenState extends State<AlumnoProfileScreen> {
   var userData = {};
   int projectLen = 0;
-  int followers = 0;
-  int following = 0;
-  bool isFollowing = false;
+
   bool isLoading = false;
 
   @override
@@ -48,9 +48,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       projectLen = projectSnap.docs.length;
       userData = userSnap.docs[0].data();
-      
-      
-      setState(() {});
+
+      //setState(() {});
     } catch (e) {
       showSnackBar(
         context,
@@ -64,6 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return isLoading
         ? const Center(
             child: CircularProgressIndicator(),
@@ -101,7 +101,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     buildStatColumn(projectLen, "projects"),
-                                    
                                   ],
                                 ),
                                 Row(
@@ -127,21 +126,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               );
                                             },
                                           )
-                                        : isFollowing
-                                            ? FollowButton(
-                                                text: 'Unfollow',
-                                                backgroundColor: Colors.white,
-                                                textColor: Colors.black,
-                                                borderColor: Colors.grey,
-                                                
-                                              )
-                                            : FollowButton(
-                                                text: 'Follow',
-                                                backgroundColor: Colors.blue,
-                                                textColor: Colors.white,
-                                                borderColor: Colors.blue,
-                                                
-                                              )
+                                        : FollowButton(
+                                            text: 'Follow',
+                                            backgroundColor: Colors.blue,
+                                            textColor: Colors.white,
+                                            borderColor: Colors.blue,
+                                          )
                                   ],
                                 ),
                               ],
